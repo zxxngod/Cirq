@@ -49,6 +49,7 @@ class AsyncioExecutor:
             loop.default_exception_handler(context)
 
         loop = asyncio.get_running_loop()
+        loop.set_exception_handler(handle_exception)
         loop_future.set_result(loop)
         while True:
             await asyncio.sleep(1)
